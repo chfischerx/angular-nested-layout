@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 0;
+}
+
+.content {
+  background: lightgray;
+  border: 1px;
+  border-style: solid;
+  flex: auto;
+}
