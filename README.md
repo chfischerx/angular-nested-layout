@@ -76,14 +76,21 @@ File content.component.css:
 }
 
 .wrapper {
-  overflow: auto;
   height: 0;
+}
+
+.content {
+  background: lightgray;
+  border: 1px;
+  border-style: solid;
+  height: 100%;
+  overflow: auto;
 }
 ```
 
-Overflow auto applied at the wrapper div makes sure a scrollbar will be shown when the content exceeds available space. 
+Overflow auto applied at the content div makes sure a scrollbar will be shown when the content exceeds available space. 
 
-The second setting 'height: 0' (or min-height) applied to the wrapper element is rather a mystery, but without it doesn't work! I assume this has to do with the general rule, a scrollbar can only be shown for an element which as a defined height. The actual available height for the content component is automatically derived from the brwoser's current viewport (that was the goal in the first place). Nevertheless, the solution only worked by applying a height property to the wrapper div itself! I also tried it without a wrapper div by applying the same settings directly to the host element, but this didn't work either.
+CSS 'height: 0' (or min-height) applied to the wrapper element is rather a mystery, but without it doesn't work! I assume this has to do with the general rule, a scrollbar can only be shown for an element which as a defined height (even if it is zero). The actual available vertical space for the content component is automatically derived from the brwoser's current viewport (that was the goal in the first place). Nevertheless, the solution only worked by applying a height property to the wrapper div itself! I also tried it without a wrapper div by applying the same settings directly to the host element, but this didn't work either.
 
 ## Development server
 
