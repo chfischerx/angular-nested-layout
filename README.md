@@ -2,7 +2,7 @@
 
 This project shows a simple example for a classic header - content - footer layout using Angular. 
 
-I had the following goals when creating this project:
+I had the following goals in mind when creating this project:
 - Header and footer shall always be visible and never resize
 - The content area in the middle shall always stretch vertically to use all the remaining vertical space
 - Show a scrollbar when the content area exceeds available vertical space
@@ -15,8 +15,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 At first sight the problem sounds rather trivial, especcially with pure HTML and CSS. The whole problem became rather challenging in combination with Angular and routing. There are tons of articles, blogs, stackoverflow questions, and code examples describing the same problem. But none of these examples seemed to fully work for me. 
 
 Overall there are two basic challenges:
-* How to stretch the content area if the content is smaller than the available space
-* How to show a scrollbar in the content area when the content itself overflows the available vertical space
+* How to stretch the content area vetically if the content is smaller than the available space
+* How to show a scrollbar in the content area when the content overflows the available vertical space
 
 It seems these days the two common approaches for a nested layout with columns and rows are:
 * CSS Grid
@@ -81,9 +81,9 @@ File content.component.css:
 }
 ```
 
-The most important setting here is to apply a height to the wrapper div element! Any height including 0 is fine. Without it doesn't work! 
+Overflow auto applied at the wrapper div makes sure a scrollbar will be shown when the content exceeds available space. 
 
-I assume this has to do with the general rule, a scrollbar can only be shown for an element which as a defined height. The actual available height for the content component is automatically derived from the brwoser's current viewport (that was the goal in the first place). Nevertheless, the solution only worked by applying a height property to the wrapper div itself! I also tried it without a wrapper div by applying the same settings directly to the host element, but this didn't work either.
+The second setting 'height: 0' (or min-height) applied to the wrapper element is rather a mystery, but without it doesn't work! I assume this has to do with the general rule, a scrollbar can only be shown for an element which as a defined height. The actual available height for the content component is automatically derived from the brwoser's current viewport (that was the goal in the first place). Nevertheless, the solution only worked by applying a height property to the wrapper div itself! I also tried it without a wrapper div by applying the same settings directly to the host element, but this didn't work either.
 
 ## Development server
 
